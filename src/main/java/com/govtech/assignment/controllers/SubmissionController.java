@@ -29,12 +29,24 @@ public class SubmissionController {
     public ResponseEntity<ResponseDto> saveSubmissionForm (@RequestBody @Valid SubmissionFormDto submissionFormDto) {
         Submission submission = submissionMapper.submissionFormDtoToSubmission(submissionFormDto);
 
-        return new ResponseEntity<>(new ResponseDto(submissionService.saveSubmissionForm(submission), HttpStatus.CREATED.value()), HttpStatus.CREATED);
+        return new ResponseEntity<>(
+                new ResponseDto(
+                        submissionMapper.submissionToSubmissionStatusDto(submissionService.saveSubmissionForm(submission)),
+                        HttpStatus.CREATED.value()
+                ),
+                HttpStatus.CREATED
+        );
     }
 
     @GetMapping()
     public ResponseEntity<ResponseDto> getAllSubmissionStatus (@RequestBody @Valid UserDto userDto) {
 
-        return new ResponseEntity<>(new ResponseDto(submissionService.getAllSubmissionStatusByEmailAndContactNumber(userDto.getEmail(), userDto.getContactNumber()), HttpStatus.OK.value()), HttpStatus.OK);
+        return new ResponseEntity<>(
+                new ResponseDto(
+                        submissionService.getAllSubmissionStatusByEmailAndContactNumber(userDto.getEmail(), userDto.getContactNumber()),
+                        HttpStatus.OK.value()
+                ),
+                HttpStatus.OK
+        );
     }
 }

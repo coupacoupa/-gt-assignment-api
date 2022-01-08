@@ -1,5 +1,6 @@
 package com.govtech.assignment.services;
 
+import com.govtech.assignment.dtos.FeedbackDto;
 import com.govtech.assignment.dtos.UserSubmissionStatusDto;
 import com.govtech.assignment.entities.Submission;
 import com.govtech.assignment.repositories.SubmissionRepository;
@@ -15,8 +16,15 @@ public class SubmissionService {
     @Autowired
     private SubmissionRepository submissionRepository;
 
+    @Autowired
+    private CodeifyService codeifyService;
+
     public Submission saveSubmissionForm(Submission submission) {
         log.info("[saveSubmissionForm]");
+
+        // Call codeify api to get feedback status
+        String feedbackStatus = codeifyService.getFeedbackDto(submission.getFeedback());
+        submission.setFeedbackStatus(feedbackStatus);
 
         return submissionRepository.save(submission);
     }
