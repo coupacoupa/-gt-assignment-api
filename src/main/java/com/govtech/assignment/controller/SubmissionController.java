@@ -19,6 +19,7 @@ import java.util.concurrent.ExecutionException;
 @RestController
 @RequestMapping("/api/v1/submissions")
 @Validated
+@CrossOrigin
 public class SubmissionController {
     @Autowired
     private SubmissionService submissionService;
@@ -38,10 +39,10 @@ public class SubmissionController {
     }
 
     @GetMapping()
-    public ResponseEntity<ResponseDto> getAllSubmissionStatus (@RequestBody @Valid SubmissionFilterDto userDto) {
+    public ResponseEntity<ResponseDto> getAllSubmissionStatus (@RequestParam String email, @RequestParam  String contactNumber) {
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionsToSubmissionStatusDtos(
-                        submissionService.getAllSubmissionStatusByEmailAndContactNumber(userDto.getEmail(), userDto.getContactNumber())
+                        submissionService.getAllSubmissionStatusByEmailAndContactNumber(email, contactNumber)
                 ),
                 HttpStatus.OK.value()
         );
