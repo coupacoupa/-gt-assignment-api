@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Submission {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long rowuid;
+    private Long submissionNo;
 
     private String name;
 

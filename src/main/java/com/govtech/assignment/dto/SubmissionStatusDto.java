@@ -10,5 +10,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class SubmissionStatusDto extends SubmissionFormDto {
+    private Long submissionNo;
     private String feedbackStatus;
 }

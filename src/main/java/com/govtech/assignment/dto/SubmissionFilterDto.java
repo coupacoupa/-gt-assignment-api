@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class UserDto {
+public class SubmissionFilterDto {
     @NotEmpty(message = "Email is mandatory")
     private String email;
 

@@ -5,10 +5,13 @@ import com.govtech.assignment.dto.SubmissionStatusDto;
 import com.govtech.assignment.entity.Submission;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface SubmissionMapper {
     Submission submissionFormDtoToSubmission (SubmissionFormDto submissionFormDto);
 
-    Submission submissionStatusDtoToSubmission (SubmissionStatusDto submissionStatusDto);
     SubmissionStatusDto submissionToSubmissionStatusDto (Submission submission);
+
+    List<SubmissionStatusDto> submissionsToSubmissionStatusDtos (List<Submission> submissions);
 }
