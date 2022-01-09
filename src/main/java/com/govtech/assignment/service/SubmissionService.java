@@ -19,6 +19,7 @@ public class SubmissionService {
 
     public Submission saveSubmissionForm(Submission submission) {
         log.info("[saveSubmissionForm]");
+        submission.setFeedbackStatus("Processing");
 
         // Call codeify api to get feedback status
         codeifyService.getFeedbackDto(submission);
