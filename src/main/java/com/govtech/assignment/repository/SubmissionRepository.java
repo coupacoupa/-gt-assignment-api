@@ -1,6 +1,6 @@
-package com.govtech.assignment.repositories;
+package com.govtech.assignment.repository;
 
-import com.govtech.assignment.entities.Submission;
+import com.govtech.assignment.entity.Submission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

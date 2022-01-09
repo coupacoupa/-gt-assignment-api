@@ -1,4 +1,4 @@
-package com.govtech.assignment.dtos;
+package com.govtech.assignment.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

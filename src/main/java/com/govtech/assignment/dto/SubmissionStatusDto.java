@@ -1,4 +1,4 @@
-package com.govtech.assignment.dtos;
+package com.govtech.assignment.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class FeedbackDto {
-    private String sentiment;
-
-    private int time;
-
-    private String feedback;
-
-    private String status;
+public class SubmissionStatusDto extends SubmissionFormDto {
+    private String feedbackStatus;
 }

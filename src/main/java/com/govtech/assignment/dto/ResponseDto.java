@@ -1,7 +1,4 @@
-package com.govtech.assignment.dtos;
-
-import lombok.AllArgsConstructor;
-import lombok.experimental.SuperBuilder;
+package com.govtech.assignment.dto;
 
 public class ResponseDto<T> {
     public T data;

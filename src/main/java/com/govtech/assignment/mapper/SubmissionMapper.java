@@ -1,8 +1,8 @@
-package com.govtech.assignment.mappers;
+package com.govtech.assignment.mapper;
 
-import com.govtech.assignment.dtos.SubmissionFormDto;
-import com.govtech.assignment.dtos.SubmissionStatusDto;
-import com.govtech.assignment.entities.Submission;
+import com.govtech.assignment.dto.SubmissionFormDto;
+import com.govtech.assignment.dto.SubmissionStatusDto;
+import com.govtech.assignment.entity.Submission;
 import org.mapstruct.Mapper;
 
 @Mapper

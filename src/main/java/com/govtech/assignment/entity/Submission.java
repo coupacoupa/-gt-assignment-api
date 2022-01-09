@@ -1,6 +1,5 @@
-package com.govtech.assignment.entities;
+package com.govtech.assignment.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

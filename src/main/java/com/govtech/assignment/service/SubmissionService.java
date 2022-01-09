@@ -1,14 +1,14 @@
-package com.govtech.assignment.services;
+package com.govtech.assignment.service;
 
-import com.govtech.assignment.dtos.FeedbackDto;
-import com.govtech.assignment.dtos.UserSubmissionStatusDto;
-import com.govtech.assignment.entities.Submission;
-import com.govtech.assignment.repositories.SubmissionRepository;
+import com.govtech.assignment.entity.Submission;
+import com.govtech.assignment.repository.SubmissionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Service
 @Slf4j
@@ -23,8 +23,7 @@ public class SubmissionService {
         log.info("[saveSubmissionForm]");
 
         // Call codeify api to get feedback status
-        String feedbackStatus = codeifyService.getFeedbackDto(submission.getFeedback());
-        submission.setFeedbackStatus(feedbackStatus);
+        codeifyService.getFeedbackDto(submission);
 
         return submissionRepository.save(submission);
     }
