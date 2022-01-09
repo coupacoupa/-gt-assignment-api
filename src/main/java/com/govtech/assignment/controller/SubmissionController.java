@@ -1,8 +1,8 @@
 package com.govtech.assignment.controller;
 
 import com.govtech.assignment.dto.ResponseDto;
-import com.govtech.assignment.dto.SubmissionFormDto;
 import com.govtech.assignment.dto.SubmissionFilterDto;
+import com.govtech.assignment.dto.SubmissionFormDto;
 import com.govtech.assignment.entity.Submission;
 import com.govtech.assignment.mapper.SubmissionMapper;
 import com.govtech.assignment.service.SubmissionService;
@@ -42,7 +42,7 @@ public class SubmissionController {
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionsToSubmissionStatusDtos(
                         submissionService.getAllSubmissionStatusByEmailAndContactNumber(userDto.getEmail(), userDto.getContactNumber())
-                )                ,
+                ),
                 HttpStatus.OK.value()
         );
 
