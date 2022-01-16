@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/submissions")
@@ -30,6 +31,9 @@ public class SubmissionController {
     public ResponseEntity<ResponseDto> saveSubmissionForm (@RequestBody @Valid SubmissionFormDto submissionFormDto) throws ExecutionException, InterruptedException {
         Submission submission = submissionMapper.submissionFormDtoToSubmission(submissionFormDto);
 
+        // To see isLoading in frontend
+        TimeUnit.SECONDS.sleep(1);
+
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionToSubmissionStatusDto(submissionService.saveSubmissionForm(submission)),
                 HttpStatus.CREATED.value()
@@ -39,10 +43,10 @@ public class SubmissionController {
     }
 
     @GetMapping()
-    public ResponseEntity<ResponseDto> getAllSubmissionStatus (@RequestParam String email, @RequestParam  String contactNumber) {
+    public ResponseEntity<ResponseDto> getAllSubmissionStatus (@RequestParam String email, @RequestParam  String contactNumber, @RequestParam(defaultValue = "0") int page,  @RequestParam(defaultValue = "20")  int size) {
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionsToSubmissionStatusDtos(
-                        submissionService.getAllSubmissionStatusByEmailAndContactNumber(email, contactNumber)
+                        submissionService.getAllSubmissionStatusByEmailAndContactNumber(email, contactNumber, page, size)
                 ),
                 HttpStatus.OK.value()
         );

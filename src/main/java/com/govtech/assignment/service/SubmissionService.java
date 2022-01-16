@@ -4,6 +4,9 @@ import com.govtech.assignment.entity.Submission;
 import com.govtech.assignment.repository.SubmissionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,9 +30,10 @@ public class SubmissionService {
         return submissionRepository.save(submission);
     }
 
-    public List<Submission> getAllSubmissionStatusByEmailAndContactNumber(String email, String contactNumber) {
+    public List<Submission> getAllSubmissionStatusByEmailAndContactNumber(String email, String contactNumber, int page, int size) {
         log.info("[getAllSubmissionStatus]");
 
-        return submissionRepository.findByEmailAndContactNumber(email, contactNumber);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
+        return submissionRepository.findByEmailAndContactNumber(email, contactNumber, pageable);
     }
 }
