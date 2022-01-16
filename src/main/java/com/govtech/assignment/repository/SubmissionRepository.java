@@ -9,5 +9,7 @@ import java.util.List;
 public interface SubmissionRepository extends JpaRepository<Submission, Long> {
     List<Submission> findByEmailAndContactNumber(String email, String contactNumber, Pageable pageble);
 
+    Long countByEmailAndContactNumber(String email, String contactNumber);
+
     Submission save(Submission submission);
 }

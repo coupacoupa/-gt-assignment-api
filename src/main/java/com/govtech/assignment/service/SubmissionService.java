@@ -22,7 +22,7 @@ public class SubmissionService {
 
     public Submission saveSubmissionForm(Submission submission) {
         log.info("[saveSubmissionForm]");
-        submission.setFeedbackStatus("Processing");
+        submission.setFeedbackStatus("processing");
 
         // Call codeify api to get feedback status
         codeifyService.getFeedbackDto(submission);
@@ -31,9 +31,15 @@ public class SubmissionService {
     }
 
     public List<Submission> getAllSubmissionStatusByEmailAndContactNumber(String email, String contactNumber, int page, int size) {
-        log.info("[getAllSubmissionStatus]");
+        log.info("[getAllSubmissionStatusByEmailAndContactNumber]");
 
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdDate").descending());
         return submissionRepository.findByEmailAndContactNumber(email, contactNumber, pageable);
+    }
+
+    public long getSubmissionCountByEmailAndContactNumber(String email, String contactNumber) {
+        log.info("[getSubmissionCountByEmailAndContactNumber]");
+
+        return submissionRepository.countByEmailAndContactNumber(email, contactNumber);
     }
 }
