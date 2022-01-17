@@ -20,6 +20,7 @@ public class SubmissionFormDto {
     private String name;
 
     @NotEmpty(message = "Email is mandatory")
+    @Size(max = 100, message = "Email exceeded maximum size of 100")
     @Email
     private String email;
 
