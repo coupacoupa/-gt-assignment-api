@@ -31,7 +31,7 @@ public class SubmissionController {
         Submission submission = submissionMapper.submissionFormDtoToSubmission(submissionFormDto);
 
         // To see isLoading in frontend
-        TimeUnit.SECONDS.sleep(1);
+//        TimeUnit.SECONDS.sleep(1);
 
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionToSubmissionStatusDto(submissionService.saveSubmissionForm(submission)),

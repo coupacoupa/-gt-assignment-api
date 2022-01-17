@@ -1,6 +1,5 @@
 package com.govtech.assignment.service;
 
-import com.govtech.assignment.common.utils.StringUtil;
 import com.govtech.assignment.dto.FeedbackDto;
 import com.govtech.assignment.entity.Submission;
 import com.govtech.assignment.repository.SubmissionRepository;
@@ -28,10 +27,9 @@ public class CodeifyService {
         log.info("[getFeedbackDto] Retrieving feedback status");
 
         RestTemplate restTemplate = new RestTemplate();
-        String sanitizedFeedback = StringUtil.sanitizeUserInput(submission.getFeedback());
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(codeifySubmitFeedbackUrl)
-                .queryParam("feedback", sanitizedFeedback);
+                .queryParam("feedback", submission.getFeedback());
 
         ResponseEntity<FeedbackDto> response = restTemplate.getForEntity(builder.toUriString(), FeedbackDto.class);
         String feedbackStatus = response.getBody().getStatus();

@@ -17,6 +17,4 @@ public class SubmissionStatusDto extends SubmissionFormDto {
     private String feedbackStatus;
 
     private LocalDateTime createdDate;
-
-    private Long totalSubmission;
 }
