@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/v1/submissions")
@@ -33,7 +34,7 @@ public class SubmissionController {
         Submission submission = submissionMapper.submissionFormDtoToSubmission(submissionFormDto);
 
         // To see isLoading in frontend
-//        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(1);
 
         ResponseDto responseDto = new ResponseDto(
                 submissionMapper.submissionToSubmissionStatusDto(submissionService.saveSubmissionForm(submission)),
